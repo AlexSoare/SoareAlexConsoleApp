@@ -1,0 +1,15 @@
+F:\PROJECTS\ASP.Net\SoareAlexConsoleApp\SoareAlexConsoleApp\bin\Debug\net6.0\SoareAlexConsoleApp.exe
+F:\PROJECTS\ASP.Net\SoareAlexConsoleApp\SoareAlexConsoleApp\bin\Debug\net6.0\SoareAlexConsoleApp.deps.json
+F:\PROJECTS\ASP.Net\SoareAlexConsoleApp\SoareAlexConsoleApp\bin\Debug\net6.0\SoareAlexConsoleApp.runtimeconfig.json
+F:\PROJECTS\ASP.Net\SoareAlexConsoleApp\SoareAlexConsoleApp\bin\Debug\net6.0\SoareAlexConsoleApp.dll
+F:\PROJECTS\ASP.Net\SoareAlexConsoleApp\SoareAlexConsoleApp\bin\Debug\net6.0\SoareAlexConsoleApp.pdb
+F:\PROJECTS\ASP.Net\SoareAlexConsoleApp\SoareAlexConsoleApp\obj\Debug\net6.0\SoareAlexConsoleApp.csproj.AssemblyReference.cache
+F:\PROJECTS\ASP.Net\SoareAlexConsoleApp\SoareAlexConsoleApp\obj\Debug\net6.0\SoareAlexConsoleApp.GeneratedMSBuildEditorConfig.editorconfig
+F:\PROJECTS\ASP.Net\SoareAlexConsoleApp\SoareAlexConsoleApp\obj\Debug\net6.0\SoareAlexConsoleApp.AssemblyInfoInputs.cache
+F:\PROJECTS\ASP.Net\SoareAlexConsoleApp\SoareAlexConsoleApp\obj\Debug\net6.0\SoareAlexConsoleApp.AssemblyInfo.cs
+F:\PROJECTS\ASP.Net\SoareAlexConsoleApp\SoareAlexConsoleApp\obj\Debug\net6.0\SoareAlexConsoleApp.csproj.CoreCompileInputs.cache
+F:\PROJECTS\ASP.Net\SoareAlexConsoleApp\SoareAlexConsoleApp\obj\Debug\net6.0\SoareAlexConsoleApp.dll
+F:\PROJECTS\ASP.Net\SoareAlexConsoleApp\SoareAlexConsoleApp\obj\Debug\net6.0\refint\SoareAlexConsoleApp.dll
+F:\PROJECTS\ASP.Net\SoareAlexConsoleApp\SoareAlexConsoleApp\obj\Debug\net6.0\SoareAlexConsoleApp.pdb
+F:\PROJECTS\ASP.Net\SoareAlexConsoleApp\SoareAlexConsoleApp\obj\Debug\net6.0\SoareAlexConsoleApp.genruntimeconfig.cache
+F:\PROJECTS\ASP.Net\SoareAlexConsoleApp\SoareAlexConsoleApp\obj\Debug\net6.0\ref\SoareAlexConsoleApp.dll
