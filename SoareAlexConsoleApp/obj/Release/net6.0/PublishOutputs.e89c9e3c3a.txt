@@ -1,0 +1,5 @@
+D:\PROJECTS\ASP. NET\SoareAlexConsoleApp\SoareAlexConsoleApp\bin\Release\net6.0\app.publish\SoareAlexConsoleApp.exe
+D:\PROJECTS\ASP. NET\SoareAlexConsoleApp\SoareAlexConsoleApp\bin\Release\net6.0\app.publish\SoareAlexConsoleApp.dll
+D:\PROJECTS\ASP. NET\SoareAlexConsoleApp\SoareAlexConsoleApp\bin\Release\net6.0\app.publish\SoareAlexConsoleApp.deps.json
+D:\PROJECTS\ASP. NET\SoareAlexConsoleApp\SoareAlexConsoleApp\bin\Release\net6.0\app.publish\SoareAlexConsoleApp.runtimeconfig.json
+D:\PROJECTS\ASP. NET\SoareAlexConsoleApp\SoareAlexConsoleApp\bin\Release\net6.0\app.publish\SoareAlexConsoleApp.pdb
