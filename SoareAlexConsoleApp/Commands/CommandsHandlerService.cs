@@ -1,20 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Reflection;
+using Microsoft.Extensions.Logging;
 using SoareAlexConsoleApp.Commands.Handlers;
 
 namespace SoareAlexConsoleApp.Commands
 {
     public class CommandsHandlerService
     {
+        private readonly ILogger<CommandsHandlerService> logger;
+
         private Dictionary<string, AbstractCommandHandler> commandHandlers;
         private List<string> availableCommands;
 
-        public CommandsHandlerService(IServiceProvider serviceProvider)
+        public CommandsHandlerService(ILogger<CommandsHandlerService> logger, IServiceProvider serviceProvider)
         {
+            this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
+
             commandHandlers = new Dictionary<string, AbstractCommandHandler>();
             availableCommands = new List<string>();
 
@@ -70,9 +70,9 @@ namespace SoareAlexConsoleApp.Commands
             }
             else
             {
-                Console.WriteLine("Invalid command. Available commands:");
+                logger.LogError("Invalid command. Available commands:");
                 foreach (var c in availableCommands)
-                    Console.WriteLine(c);
+                    logger.LogInformation(c);
             }
         }
         private AbstractCommandHandler GetCommandHandler(string forCommmand)
@@ -85,7 +85,7 @@ namespace SoareAlexConsoleApp.Commands
             return null;
         }
 
-        public static void LogAvailableCommands()
+        public void LogAvailableCommands()
         {
             var tempCommandsList = new List<string>();
 
@@ -98,16 +98,25 @@ namespace SoareAlexConsoleApp.Commands
                 foreach (var commandHandlerType in commandHandlerTypes)
                 {
                     var commandProperty = commandHandlerType.GetProperty("CommandName", BindingFlags.Public | BindingFlags.Static);
+                    var commandInfoProperty = commandHandlerType.GetProperty("CommandInfo", BindingFlags.Public | BindingFlags.Static);
+
                     if (commandProperty != null)
                     {
                         var commandValue = (string)commandProperty.GetValue(null);
 
                         if (string.IsNullOrEmpty(commandValue))
-                            LogBrokenCommand(commandHandlerType,"\"CommandName\" paramenter is empty or not defined");
-                        else if(tempCommandsList.Contains(commandValue))
+                            LogBrokenCommand(commandHandlerType, "\"CommandName\" paramenter is empty or not defined");
+                        else if (tempCommandsList.Contains(commandValue))
                             LogBrokenCommand(commandHandlerType, $"Handler for {commandValue} was already registered!");
                         else
-                            tempCommandsList.Add(commandValue);
+                        {
+                            var commandInfo = "";
+
+                            if(commandInfoProperty != null)
+                                commandInfo = (string)commandInfoProperty.GetValue(null);
+
+                            tempCommandsList.Add(commandValue + " " + commandInfo);
+                        }
                     }
                     else
                         LogBrokenCommand(commandHandlerType, "\"CommandName\" paramenter is empty or not defined");
@@ -115,17 +124,19 @@ namespace SoareAlexConsoleApp.Commands
             }
 
             Console.WriteLine("Available commands:");
+            Console.WriteLine("");
             foreach (var c in tempCommandsList)
                 Console.WriteLine(c);
-        }
 
-        private static void LogBrokenCommand(Type commandType, string reasonMessage)
+            Console.WriteLine("");
+        }
+        private void LogBrokenCommand(Type commandType, string reasonMessage)
         {
             var classNameSplit = commandType.Name.Split('.');
             var className = classNameSplit != null && classNameSplit.Length > 0 ? classNameSplit.Last() : "NAME_NOT_FOUND";
 
-            Console.WriteLine($"Could not register {className} command because:");
-            Console.WriteLine(reasonMessage);
+            logger.LogError($"Could not register {className} command because:");
+            logger.LogError(reasonMessage);
         }
     }
 }

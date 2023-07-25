@@ -1,7 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using SoareAlexConsoleApp.Commands;
 using SoareAlexConsoleApp.Commands.Handlers;
 using System.Reflection;
+using Serilog;
 
 namespace SoareAlexConsoleApp
 {
@@ -11,15 +13,35 @@ namespace SoareAlexConsoleApp
         {
             var serviceCollection = new ServiceCollection();
 
-            serviceCollection.AddScoped(s =>
+            Log.Logger = new LoggerConfiguration()
+               .Enrich.FromLogContext()
+               .WriteTo.Console()
+               .CreateLogger();
+
+            serviceCollection.AddLogging(builder =>
             {
-                return new AppServiceAPI("https://localhost:7131");
+                builder.AddSerilog(dispose: true);
+            });
+
+            serviceCollection.AddSingleton<UrlProvider>();
+            serviceCollection.AddSingleton<GameContext>(p =>
+            {
+                var appService = p.GetService<AppServiceAPI>();
+                var logger = p.GetService<ILogger<GameContext>>();
+                var urlProvider = p.GetService<UrlProvider>();
+
+                return new GameContext(logger, appService, urlProvider);
+            });
+            serviceCollection.AddSingleton(p =>
+            {
+                var logger = p.GetService<ILogger<AppServiceAPI>>();
+                var urlProvider = p.GetService<UrlProvider>();
+
+                return new AppServiceAPI(logger, urlProvider);
             });
 
             serviceCollection.AddScoped<CommandsHandlerService>();
-
-            CommandsHandlerService.LogAvailableCommands();
-
+           
             var commandHandlerTypes = Assembly.GetExecutingAssembly()
                .GetTypes()
                .Where(type => typeof(AbstractCommandHandler).IsAssignableFrom(type) && !type.IsAbstract);
@@ -28,11 +50,11 @@ namespace SoareAlexConsoleApp
                 serviceCollection.AddScoped(commandHandlerType);
             }
 
-            serviceCollection.AddSingleton<GameContext>();
-           
             var provider = serviceCollection.BuildServiceProvider();
 
-            return serviceCollection.BuildServiceProvider();
+            provider.GetService<CommandsHandlerService>().LogAvailableCommands();
+
+            return provider;
         }
     }
 }

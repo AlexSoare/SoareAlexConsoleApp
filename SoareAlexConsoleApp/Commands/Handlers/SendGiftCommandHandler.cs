@@ -1,72 +1,47 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.WebSockets;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
-using System.Threading.Tasks;
-using System.Text.Json;
-using System.Net.Http;
-using System;
-using System.Net.Http;
-using System.Threading.Tasks;
+﻿using Microsoft.Extensions.Logging;
 
 namespace SoareAlexConsoleApp.Commands.Handlers
 {
     public class SendGiftCommandHandler : AbstractCommandHandler
     {
         public new static string CommandName { get { return "/sendgift"; } }
+        public new static string CommandInfo { get { return "<PlayerId> <ResourceType(Coins,Rolls)> <ResourceValue>"; } }
 
-        private readonly AppServiceAPI appService;
+        private readonly ILogger<SendGiftCommandHandler> logger;
         private readonly GameContext gameContext;
 
-        public SendGiftCommandHandler(AppServiceAPI appService, GameContext gameContext)
+        public SendGiftCommandHandler(ILogger<SendGiftCommandHandler> logger, GameContext gameContext)
         {
-            this.appService = appService ?? throw new ArgumentNullException(nameof(appService));
+            this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
             this.gameContext = gameContext ?? throw new ArgumentNullException(nameof(gameContext));
         }
 
         public override async Task Handle(List<string> parameters)
         {
-            Console.WriteLine("Send gift called");
-
-            if (parameters == null || parameters.Count < 1)
+            if (parameters == null || parameters.Count < 3)
+            {
+                logger.LogError($"Not enough parameters supplied!");
+                logger.LogError($"Expected parameters: {CommandInfo}");
                 return;
-            //string serverUrl = $"wss://localhost:7131";//?authToken={parameters[0]}"; // Replace with your server URL
+            }
 
-            //using (var clientWebSocket = new ClientWebSocket())
-            //{
-            //    clientWebSocket.Options.SetRequestHeader("Authorization", parameters[0]);
-            //    // Connect to the WebSocket server
-            //    await clientWebSocket.ConnectAsync(new Uri(serverUrl), CancellationToken.None);
+            var friendPlayerId = parameters[0];
 
-            //    // Receive messages from the server
-            //    byte[] buffer = new byte[1024];
-            //    var receiveTask = Task.Run(async () =>
-            //    {
-            //        while (clientWebSocket.State == WebSocketState.Open)
-            //        {
-            //            var receiveResult = await clientWebSocket.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
-            //            if (receiveResult.MessageType == WebSocketMessageType.Text)
-            //            {
-            //                var msg = Encoding.UTF8.GetString(buffer, 0, receiveResult.Count);
-            //                var msgObject = JsonSerializer.Deserialize<WebSocketMessage>(msg);
+            ResourceType resourceType;
+            if (!Enum.TryParse(parameters[1], out resourceType))
+            {
+                logger.LogError($"Cannot parse {parameters[1]} as a ResourceType!");
+                return;
+            }
 
-            //                Console.WriteLine("Received msg: " + msgObject.Event + "|" + msgObject.Message);
-            //            }
-            //        }
-            //    });
-            //    //await receiveTask;
+            double resourceValue;
+            if (!double.TryParse(parameters[2], out resourceValue))
+            {
+                logger.LogError($"Cannot parse {parameters[2]} as a double ResourceValue!");
+                return;
+            }
 
-            //    // Close the WebSocket connection
-            //    await clientWebSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, "", CancellationToken.None);
-
-            //    async Task SendTextMessage(string message)
-            //    {
-            //        byte[] messageBytes = Encoding.UTF8.GetBytes(message);
-            //        await clientWebSocket.SendAsync(new ArraySegment<byte>(messageBytes), WebSocketMessageType.Text, true, CancellationToken.None);
-            //    }
-            //}
+            await gameContext.SendGift(friendPlayerId, resourceType, resourceValue);
         }
     }
 }
