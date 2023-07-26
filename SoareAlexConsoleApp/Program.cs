@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using SoareAlexConsoleApp;
-using SoareAlexConsoleApp.Commands;
+using SoareAlexConsoleApp.Services;
 
 var serviceProvider = DIContainerManager.Configure();
 
@@ -9,14 +9,12 @@ while (true)
     Console.Write("Enter a command: ");
     string input = Console.ReadLine();
 
-    var handleService = serviceProvider.GetService<CommandsHandlerService>();
+    var handleCommandsService = serviceProvider.GetService<CommandsHandlerService>();
 
-    if (handleService == null)
+    if (handleCommandsService == null)
         return;
 
-    var command = handleService.ParseCommand(input);
+    var command = handleCommandsService.ParseCommand(input);
     if (command != null)
-    {
-        await handleService.HandleCommandAsync(command);
-    }
+        await handleCommandsService.HandleCommandAsync(command);
 }

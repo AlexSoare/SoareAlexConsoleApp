@@ -52,3 +52,28 @@ D:\PROJECTS\ASP. NET\SoareAlexConsoleApp\SoareAlexConsoleApp\bin\Debug\net6.0\Se
 D:\PROJECTS\ASP. NET\SoareAlexConsoleApp\SoareAlexConsoleApp\bin\Debug\net6.0\System.Text.Encodings.Web.dll
 D:\PROJECTS\ASP. NET\SoareAlexConsoleApp\SoareAlexConsoleApp\bin\Debug\net6.0\System.Text.Json.dll
 D:\PROJECTS\ASP. NET\SoareAlexConsoleApp\SoareAlexConsoleApp\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
+F:\PROJECTS\ASP.Net\SoareAlexConsoleApp\SoareAlexConsoleApp\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
+F:\PROJECTS\ASP.Net\SoareAlexConsoleApp\SoareAlexConsoleApp\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Binder.dll
+F:\PROJECTS\ASP.Net\SoareAlexConsoleApp\SoareAlexConsoleApp\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
+F:\PROJECTS\ASP.Net\SoareAlexConsoleApp\SoareAlexConsoleApp\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+F:\PROJECTS\ASP.Net\SoareAlexConsoleApp\SoareAlexConsoleApp\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
+F:\PROJECTS\ASP.Net\SoareAlexConsoleApp\SoareAlexConsoleApp\bin\Debug\net6.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+F:\PROJECTS\ASP.Net\SoareAlexConsoleApp\SoareAlexConsoleApp\bin\Debug\net6.0\Microsoft.Extensions.Hosting.Abstractions.dll
+F:\PROJECTS\ASP.Net\SoareAlexConsoleApp\SoareAlexConsoleApp\bin\Debug\net6.0\Microsoft.Extensions.Logging.dll
+F:\PROJECTS\ASP.Net\SoareAlexConsoleApp\SoareAlexConsoleApp\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
+F:\PROJECTS\ASP.Net\SoareAlexConsoleApp\SoareAlexConsoleApp\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
+F:\PROJECTS\ASP.Net\SoareAlexConsoleApp\SoareAlexConsoleApp\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
+F:\PROJECTS\ASP.Net\SoareAlexConsoleApp\SoareAlexConsoleApp\bin\Debug\net6.0\Serilog.dll
+F:\PROJECTS\ASP.Net\SoareAlexConsoleApp\SoareAlexConsoleApp\bin\Debug\net6.0\Serilog.AspNetCore.dll
+F:\PROJECTS\ASP.Net\SoareAlexConsoleApp\SoareAlexConsoleApp\bin\Debug\net6.0\Serilog.Extensions.Hosting.dll
+F:\PROJECTS\ASP.Net\SoareAlexConsoleApp\SoareAlexConsoleApp\bin\Debug\net6.0\Serilog.Extensions.Logging.dll
+F:\PROJECTS\ASP.Net\SoareAlexConsoleApp\SoareAlexConsoleApp\bin\Debug\net6.0\Serilog.Formatting.Compact.dll
+F:\PROJECTS\ASP.Net\SoareAlexConsoleApp\SoareAlexConsoleApp\bin\Debug\net6.0\Serilog.Settings.Configuration.dll
+F:\PROJECTS\ASP.Net\SoareAlexConsoleApp\SoareAlexConsoleApp\bin\Debug\net6.0\Serilog.Sinks.Console.dll
+F:\PROJECTS\ASP.Net\SoareAlexConsoleApp\SoareAlexConsoleApp\bin\Debug\net6.0\Serilog.Sinks.Debug.dll
+F:\PROJECTS\ASP.Net\SoareAlexConsoleApp\SoareAlexConsoleApp\bin\Debug\net6.0\Serilog.Sinks.File.dll
+F:\PROJECTS\ASP.Net\SoareAlexConsoleApp\SoareAlexConsoleApp\bin\Debug\net6.0\System.Text.Encodings.Web.dll
+F:\PROJECTS\ASP.Net\SoareAlexConsoleApp\SoareAlexConsoleApp\bin\Debug\net6.0\System.Text.Json.dll
+F:\PROJECTS\ASP.Net\SoareAlexConsoleApp\SoareAlexConsoleApp\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
+F:\PROJECTS\ASP.Net\SoareAlexConsoleApp\SoareAlexConsoleApp\obj\Debug\net6.0\SoareAlexConsoleApp.csproj.CopyComplete
+F:\PROJECTS\ASP.Net\SoareAlexConsoleApp\SoareAlexConsoleApp\bin\Debug\net6.0\Newtonsoft.Json.dll
